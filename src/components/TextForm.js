@@ -39,6 +39,10 @@ export default function TextForm(props) {
             rows="8"
             value={text}
             onChange={handleonChange}
+            style={{
+              backgroundColor: props.mode === "dark" ? "#6c757d" : "white",
+              color: props.mode === "dark" ? "white" : "black",
+            }}
           ></textarea>
           <div className="my-2">
             <button className="btn btn-primary mx-1" onClick={handleUpClick}>
@@ -69,7 +73,7 @@ export default function TextForm(props) {
         </p>
         <p>{0.008 * text.split(" ").length} minutes requires to read.</p>
         <h2 className="my-3">Preview :</h2>
-        <p>{text}</p>
+        <p>{text.length > 0 ? text : "Enter Text in above text to preview"}</p>
       </div>
     </>
   );
