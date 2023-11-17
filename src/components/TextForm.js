@@ -13,7 +13,6 @@ export default function TextForm(props) {
     let newText = text.toLowerCase();
     setText(newText);
     props.showAlert("Converted to Lowercase.", "success");
-
   };
   const handleClearClick = () => {
     let newText = "";
@@ -27,13 +26,11 @@ export default function TextForm(props) {
     mybox.select();
     navigator.clipboard.writeText(text);
     props.showAlert("Copied to Clipboard.", "success");
-
   };
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
     props.showAlert("Extra spaces has been removed.", "success");
-
   };
 
   return (
@@ -76,8 +73,12 @@ export default function TextForm(props) {
       </div>
       <div className="container my-3">
         <h2>Your Text Summary :</h2>
-        <p>
+        {/* <p>
           {text.split(" ").length} Words and {text.length} Characters
+        </p> */}
+        <p>
+          {text.trim() === "" ? 0 : text.match(/\S+/g).length} words and{" "}
+          {text.replace(/\s+/g, "").length} characters
         </p>
         <p>{0.008 * text.split(" ").length} minutes requires to read.</p>
         <h2 className="my-3">Preview :</h2>
