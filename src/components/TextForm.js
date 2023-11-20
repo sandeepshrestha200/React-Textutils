@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const [text, setText] = useState("");
-  let mybox = document.getElementById("mybox");
 
   const handleUpClick = () => {
     let newText = text.toUpperCase();
@@ -23,9 +22,7 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
   const handleCopy = () => {
-    mybox.select();
     navigator.clipboard.writeText(text);
-    document.getSelection().removeAllRanges();
     props.showAlert("Copied to Clipboard.", "success");
   };
   const handleExtraSpaces = () => {
@@ -53,35 +50,35 @@ export default function TextForm(props) {
           <div className="my-2">
             <button
               disabled={text.length === 0}
-              className="btn btn-primary mx-1"
+              className="btn btn-primary m-2"
               onClick={handleUpClick}
             >
               Convert to UpperCase
             </button>
             <button
               disabled={text.length === 0}
-              className="btn btn-primary mx-1"
+              className="btn btn-primary m-2"
               onClick={handleLowClick}
             >
               Convert to Lowercase
             </button>
             <button
               disabled={text.length === 0}
-              className="btn btn-primary mx-1"
+              className="btn btn-primary m-2"
               onClick={handleClearClick}
             >
               Clear Text
             </button>
             <button
               disabled={text.length === 0}
-              className="btn btn-primary mx-1"
+              className="btn btn-primary m-2"
               onClick={handleCopy}
             >
               Copy Text
             </button>
             <button
               disabled={text.length === 0}
-              className="btn btn-primary mx-1"
+              className="btn btn-primary m-2"
               onClick={handleExtraSpaces}
             >
               Remove Extra Spaces
@@ -93,7 +90,7 @@ export default function TextForm(props) {
         <h2>Your Text Summary :</h2>
         <p>
           {
-            text.split(" ").filter((element) => {
+            text.split(/\s+/).filter((element) => {
               return element.length !== 0;
             }).length
           }{" "}
@@ -105,7 +102,7 @@ export default function TextForm(props) {
         </p> */}
         <p>
           {0.008 *
-            text.split(" ").filter((element) => {
+            text.split(/\s+/).filter((element) => {
               return element.length !== 0;
             }).length}{" "}
           minutes requires to read.
