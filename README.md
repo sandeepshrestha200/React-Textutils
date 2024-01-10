@@ -13,4 +13,4 @@ TextUtils is a React-based web application designed to provide various text-rela
 
 - React.js
 - JavaScript
-- bootStrap
+- BootStrap
